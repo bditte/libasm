@@ -7,35 +7,38 @@ ft_strcmp:
 	
 	mov rcx, -1
 
+;ft_strcmp(char *str1, char *str2)
+;ft_strcmp(rdi, rsi)
+
 loop:
 	inc rcx
-	mov dh, [rdi + rcx]
-	mov r8b, [rsi + rcx]
-	cmp dh, 0
+	mov dl, [rdi + rcx]
+	mov bl, [rsi + rcx]
+	cmp dl, 0
 	je str1_zero
-	cmp r8b, 0
-	je str1_greater	
+	cmp bl, 0
+	je str1_greater
+	cmp byte dl, byte bl
+	jb str1_zero
+	ja str1_greater
 	jmp loop
 
 str1_zero:
-	cmp r8b, 0
+	cmp bl, 0
 	je equals
 	mov rax, -1
 
-	mov rsp, rbp
-	pop rbp
-	ret
+	jmp return
 equals:
-	mov rsp, rbp
-	pop rbp
-
 	mov rax, 0
-	ret
+	
+	jmp return
 
 str1_greater:
+	mov rax, 1
+
+	jmp return
+return:
 	mov rsp, rbp
 	pop rbp
-
-	mov rax, 1
 	ret
-

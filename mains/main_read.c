@@ -9,7 +9,7 @@
 int main(void)
 {
 	char *buf = malloc(sizeof(char) * BUFFER_SIZE);
-	int fd = 1;
+	int fd = -1;
 		
 	printf("\nFT_READ RET VALUE : %zu\n", ft_read(fd, buf, BUFFER_SIZE));
 	printf("FT_READ BUFFER : %s\n", buf);
