@@ -6,7 +6,7 @@
 #    By: bditte <bditte@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/21 14:38:26 by bditte            #+#    #+#              #
-#    Updated: 2020/12/22 11:54:50 by bditte           ###   ########.fr        #
+#    Updated: 2020/12/23 21:48:01 by bditte           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRC = 	ft_read.s \
 	ft_strlen.s \
 	ft_strcmp.s \
 	ft_strcpy.s \
+	ft_strdup.s \
 	ft_write.s
 
 SRCS = $(addprefix $(DIR_SRCS), $(SRC))

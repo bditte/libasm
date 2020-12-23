@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <error.h>
+#include <errno.h>
+
 int main(void)
 {
 	char buf[100];
@@ -12,8 +14,11 @@ int main(void)
 	scanf("%s", buf);
 	
 	printf("\nFT_WRITE : \n");
-	printf("\nFT_WRITE RET VALUE : %zu\n\n", ft_write(fd, buf, strlen(buf)));
+	printf("\n\nFT_WRITE RET VALUE : %ld\n\n", ft_write(fd, buf, strlen(buf)));//strlen(buf)));
+	printf("\nERRNO %d\n\n", errno);
 	printf("WRITE : \n");
-	printf("\nWRITE RET VALUE : %zu\n", write(fd, buf, strlen(buf)));
+	printf("\n\nWRITE RET VALUE : %ld\n", write(fd, buf, strlen(buf)));//strlen(buf)));
+	printf("\nERRNO %d\n\n", errno);
+	error(1, errno, NULL);
 	return (0);
 }

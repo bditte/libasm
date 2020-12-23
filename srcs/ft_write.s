@@ -1,3 +1,5 @@
+extern __errno_location
+
 section .text
 	global ft_write
 
@@ -7,12 +9,18 @@ ft_write:
 
 	mov 	rax, 1
 	syscall
-	cmp 	rax, 0
-	jl	error
+	cmp	rax, 0
+	jle	error
 	jmp	return
 
 error:
-	mov 	rax, -1
+	mov	r15, -1
+	imul	r15
+	mov 	r15, rax
+	call	__errno_location
+	mov	[rax], r15
+	mov	rax, -1
+	jmp	return	
 
 return:
 	mov	rsp, rbp
